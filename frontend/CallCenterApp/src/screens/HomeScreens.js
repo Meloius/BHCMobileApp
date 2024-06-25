@@ -1,29 +1,55 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Button from '../components/Button';
-import globalStyles from '../styles/globalStyles';
+import Header from '../components/Header';
 
 const HomeScreen = ({ navigation }) => {
     return (
-        <View style={globalStyles.container}>
+        <View style={styles.container}>
+            <Header title="Call Center App" />
             <Image
                 source={require('../assets/images/logo.png')}
                 style={styles.logo}
             />
-            <Text style={globalStyles.title}>Welcome to the Call Center App</Text>
+            <Text style={styles.welcomeText}>Welcome to the Call Center App</Text>
             <Button
-                title="Go to Service Request"
+                title="Service Requests"
                 onPress={() => navigation.navigate('ServiceRequest')}
+                style={styles.button}
+                textStyle={styles.buttonText}
+            />
+            <Button
+                title="General Enquiries"
+                onPress={() => navigation.navigate('GeneralEnquiries')}
+                style={styles.button}
+                textStyle={styles.buttonText}
             />
         </View>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#F5F5F5',
+    },
     logo: {
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 150,
+        marginVertical: 20,
+    },
+    welcomeText: {
+        fontSize: 18,
+        color: '#333333',
         marginBottom: 20,
+    },
+    button: {
+        width: '80%',
+        marginVertical: 10,
+    },
+    buttonText: {
+        fontSize: 18,
     },
 });
 
