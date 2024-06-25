@@ -1,4 +1,21 @@
 import React from 'react';
+import { View, Text, Button } from 'react-native';
+
+const HomeScreen = ({ navigation }) => {
+    return (
+        <View>
+            <Text>Welcome to the Call Center App</Text>
+            <Button
+                title="Go to Service Request"
+                onPress={() => navigation.navigate('ServiceRequest')}
+            />
+        </View>
+    );
+};
+
+export default HomeScreen;
+
+import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import Button from '../components/Button';
 import Header from '../components/Header';

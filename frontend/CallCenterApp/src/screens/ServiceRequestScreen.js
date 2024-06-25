@@ -1,64 +1,63 @@
-import React from 'react';
-import { View, Text, StyleSheet, TextInput, ScrollView } from 'react-native';
-import Button from '../components/Button';
-import Header from '../components/Header';
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import globalStyles from '../styles/globalStyles';
 
-const ServiceRequestScreen = ({ navigation }) => {
+const ServiceRequestScreen = () => {
+    const [type, setType] = useState('');
+    const [category, setCategory] = useState('');
+    const [severity, setSeverity] = useState('');
+    const [description, setDescription] = useState('');
+    const [contactInfo, setContactInfo] = useState('');
+
+    const handleSubmit = () => {
+        // Handle form submission
+    };
+
     return (
-        <ScrollView style={styles.container}>
-            <Header title="Service Request" />
-            <View style={styles.formGroup}>
-                <Text style={styles.label}>Plot Number</Text>
-                <TextInput style={styles.input} placeholder="Enter plot number" />
-            </View>
-            <View style={styles.formGroup}>
-                <Text style={styles.label}>Contact Details</Text>
-                <TextInput style={styles.input} placeholder="Enter contact details" />
-            </View>
-            <View style={styles.formGroup}>
-                <Text style={styles.label}>Service Type</Text>
-                <TextInput style={styles.input} placeholder="Enter service type" />
-            </View>
-            <View style={styles.formGroup}>
-                <Text style={styles.label}>Description</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Enter description"
-                    multiline
-                />
-            </View>
-            <Button
-                title="Submit Request"
-                onPress={() => console.log('Request Submitted')}
-                style={styles.button}
+        <View style={globalStyles.container}>
+            <Text style={globalStyles.header}>Service Request</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Type"
+                value={type}
+                onChangeText={setType}
             />
-        </ScrollView>
+            <TextInput
+                style={styles.input}
+                placeholder="Category"
+                value={category}
+                onChangeText={setCategory}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Severity"
+                value={severity}
+                onChangeText={setSeverity}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Description"
+                value={description}
+                onChangeText={setDescription}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Contact Info"
+                value={contactInfo}
+                onChangeText={setContactInfo}
+            />
+            <Button title="Submit" onPress={handleSubmit} />
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#F5F5F5',
-    },
-    formGroup: {
-        margin: 20,
-    },
-    label: {
-        fontSize: 16,
-        color: '#333333',
-        marginBottom: 5,
-    },
     input: {
-        backgroundColor: '#FFFFFF',
-        padding: 10,
-        borderRadius: 5,
-        borderColor: '#CCCCCC',
+        height: 40,
+        borderColor: 'gray',
         borderWidth: 1,
-    },
-    button: {
-        marginHorizontal: 20,
-        marginVertical: 10,
+        marginBottom: 20,
+        paddingHorizontal: 10,
     },
 });
 
